@@ -65,24 +65,17 @@ button:focus-visible, a:focus-visible, select:focus-visible, .rail:focus-visible
 .hero {
   min-height: min(690px, 80vh);
   position: relative;
-  display: grid; grid-template-columns: minmax(220px, 34%) 1fr; align-items: end;
-  padding: 40px var(--gutter) 0; gap: clamp(16px, 4vw, 56px);
+  display: grid; align-items: center;
   background: #151219 url(assets/athletes.webp) center 43% / cover no-repeat;
 }
 .hero::before {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(90deg, #09090df2 0%, #0b0a10d9 45%, #0b0a1080 100%);
+  background: linear-gradient(90deg, #09090df5 1%, #0b0a10ba 38%, transparent 77%);
 }
-.hero-athlete { position: relative; margin: 0; align-self: end; }
-.hero-athlete img {
-  display: block; width: 100%; max-height: 640px; object-fit: cover; object-position: top;
-  border: 3px solid var(--pink); border-bottom: 0; border-radius: 6px 6px 0 0;
-  box-shadow: 0 20px 60px #000a;
-}
-.hero-copy { position: relative; padding: 48px 0 64px; max-width: 760px; align-self: center; }
+.hero-copy { position: relative; padding: 64px clamp(20px, 8vw, 128px); max-width: 950px; }
 .tag { color: var(--pink); font-size: .74rem; font-weight: 800; letter-spacing: .17em; margin: 0 0 8px; }
 .hero h1 {
-  font-size: clamp(2.5rem, 5.4vw, 5.2rem);
+  font-size: clamp(2.5rem, 6.4vw, 6.5rem);
   line-height: .94; letter-spacing: -.06em; margin: .22em 0;
 }
 .hero h1 em { color: var(--pink); }
@@ -200,14 +193,10 @@ select { padding: 12px; min-height: 48px; background: var(--panel); border: 1px 
   .site-nav a { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 1.05rem; }
   .site-nav .outline { margin-top: 14px; text-align: center; border-bottom: 1px solid #54545a; }
 
-  .hero { min-height: 0; grid-template-columns: 42% 1fr; padding-top: 24px; gap: 14px; background-position: 66% center; }
-  .hero::before { background: linear-gradient(0deg, #09090d 4%, #09090dd0 60%, #09090d90 100%); }
-  .hero-copy { padding: 16px 0 28px; }
-  .hero h1 { font-size: clamp(1.9rem, 8.6vw, 3rem); }
-  .hero-copy > p:not(.tag) { font-size: .9rem; }
-  .hero .btn { padding: 12px 14px; gap: 10px; }
+  .hero { min-height: 82svh; background-position: 66% center; align-items: end; }
+  .hero::before { background: linear-gradient(0deg, #09090d 4%, #09090da8 50%, transparent 90%); }
+  .hero-copy { padding-bottom: 56px; }
   .hero .btn { width: 100%; }
-  .hero-athlete img { max-height: 380px; }
 
   .awareness { grid-template-columns: 1fr; gap: 4px; }
   .swatches { gap: 10px; }
