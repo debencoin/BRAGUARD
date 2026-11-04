@@ -198,6 +198,9 @@ select { padding: 12px; min-height: 48px; background: var(--panel); border: 1px 
 }
 .spot-quote footer::before { content: ""; display: inline-block; width: 28px; height: 2px; background: var(--pink); vertical-align: middle; margin-right: 10px; }
 
+.spotlight .section-title h2 { margin-bottom: 6px; }
+.spot-sub { margin: 0 0 24px; color: var(--muted); font-size: 1.1rem; font-weight: 700; letter-spacing: .04em; }
+
 /* Awareness + giving */
 .awareness {
   border-top: 1px solid var(--line);
