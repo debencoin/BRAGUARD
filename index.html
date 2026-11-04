@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>BRAGUARD™ | Flag Football Sports Bra</title>
+  <meta name="description" content="A segmented padded sports bra designed for women who play flag football. Explore BRAGUARD colorways.">
+  <meta name="theme-color" content="#0b0b0e">
+  <meta property="og:title" content="BRAGUARD™ | Flag Football Sports Bra">
+  <meta property="og:description" content="Play fearless. Stay protected. A padded sports bra built for women's flag football.">
+  <meta property="og:image" content="assets/athletes.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/logo.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/athletes.webp">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="BRAGUARD home"><img src="assets/logo.webp" alt="BRAGUARD" width="320" height="168"></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+      <a href="#shop">Shop</a>
+      <a href="#awareness">Breast safety</a>
+      <a href="#giving">Giving back</a>
+      <a class="outline" href="#shop">Shop the bra ↗</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="tag">01 / BUILT FOR FLAG FOOTBALL</p>
+        <h1>PLAY FEARLESS.<br><em>STAY PROTECTED.</em></h1>
+        <p>BRAGUARD™. Women’s protection meets performance.</p>
+        <a class="btn" href="#shop">Find your color <span aria-hidden="true">↗</span></a>
+      </div>
+      <small>AI-generated athlete campaign imagery</small>
+    </section>
+
+    <div class="strip">
+      <span>WOMEN’S FLAG FOOTBALL</span><b aria-hidden="true">✦</b>
+      <span>FOUR SEGMENTED PADS</span><b aria-hidden="true">✦</b>
+      <span>BREAST SAFETY AWARENESS</span>
+    </div>
+
+    <section id="shop" class="shop">
+      <div class="section-title">
+        <p class="tag">02 / THE COLOR LINEUP</p>
+        <h2>Pick your color.</h2>
+      </div>
+      <div class="product">
+        <div class="gallery" aria-label="Swipeable BRAGUARD color carousel">
+          <div class="rail" tabindex="0" aria-label="Product color photos"></div>
+          <button class="arrow prev" type="button" aria-label="Previous color">‹</button>
+          <button class="arrow next" type="button" aria-label="Next color">›</button>
+          <button class="rotation" type="button">Pause slideshow</button>
+          <div class="counter" aria-live="polite"></div>
+        </div>
+        <div class="details">
+          <p class="tag">BRAGUARD™ / FLAG SERIES</p>
+          <h3>The BRAGUARD Bra</h3>
+          <div class="price">$49.99 <small>USD</small></div>
+          <p>Four ribbed pads across the chest and outer sides, outlined with black piping. Racerback straps and a wide underband finish the fit.</p>
+          <p class="color-label">Color <strong id="color"></strong></p>
+          <div class="swatches" role="group" aria-label="Choose color"></div>
+          <label for="size">Size</label>
+          <select id="size">
+            <option value="">Choose a size</option>
+            <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option>
+          </select>
+          <button class="btn buy" id="buy" type="button">Pay with Stripe <span aria-hidden="true">↗</span></button>
+          <p id="status" role="status">Store preview. Live checkout is pending merchant setup.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="awareness" class="awareness">
+      <div>
+        <p class="tag">03 / BREAST SAFETY AWARENESS</p>
+        <h2>Protecting womanhood starts with taking breast safety seriously.</h2>
+      </div>
+      <div>
+        <p>Breast safety belongs in the flag football gear conversation. A direct hit to the breast during a catch, dive, or collision can cause soreness and bruising. Athletes should feel comfortable speaking up about breast pain after a hit. On punt returns, in formats that use punts, a returner worried about chest contact may try to trap the ball low against her stomach. Changing the catch point at the last second can make a clean catch harder and leave room for a muff.</p>
+        <p>BRAGUARD pairs a racerback sports bra with four ribbed pads designed to cushion direct hits across the front and outer chest, with the goal of helping reduce impact-related soreness and bruising. A hard, chest-high throw can also reach the body before a receiver secures it. BRAGUARD is designed to give athletes a padded option so they can focus on tracking and securing the ball with confidence.</p>
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6683617/" target="_blank" rel="noopener">Read research on breast injuries in female athletes ↗</a>
+        <p class="safety">BRAGUARD is not FDA approved. Injury-prevention performance has not been established.</p>
+      </div>
+    </section>
+
+    <section id="giving" class="awareness" aria-labelledby="give-title">
+      <div>
+        <p class="tag">04 / GIVING BACK</p>
+        <h2 id="give-title">Support breast cancer awareness and girls’ flag football.</h2>
+      </div>
+      <div>
+        <p><strong>5% of BRAGUARD sales</strong> will support breast cancer awareness.</p>
+        <p><strong>Another 5% of BRAGUARD sales</strong> will go toward sponsoring youth flag football and helping more girls get on the field.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <img src="assets/logo.webp" alt="BRAGUARD" width="320" height="168" loading="lazy">
+    <span>Built around the women who play.</span>
+    <a href="#shop">Back to shop ↑</a>
+  </footer>
+
+  <script src="checkout.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
