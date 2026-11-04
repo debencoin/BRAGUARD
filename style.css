@@ -80,10 +80,6 @@ button:focus-visible, a:focus-visible, select:focus-visible, .rail:focus-visible
 }
 .hero h1 em { color: var(--pink); }
 .hero-copy > p:not(.tag) { max-width: 370px; color: #eee; }
-.hero > small {
-  position: absolute; right: 12px; bottom: 12px;
-  background: #000b; padding: 4px 8px; font-size: .7rem; color: #ccc;
-}
 
 .btn {
   background: var(--pink); color: #100710; border: 0; font-weight: 850;
@@ -201,7 +197,6 @@ select { padding: 12px; min-height: 48px; background: var(--panel); border: 1px 
   .hero::before { background: linear-gradient(0deg, #09090d 4%, #09090da8 50%, transparent 90%); }
   .hero-copy { padding-bottom: 56px; }
   .hero .btn { width: 100%; }
-  .hero > small { top: 12px; bottom: auto; }
 
   .awareness { grid-template-columns: 1fr; gap: 4px; }
   .swatches { gap: 10px; }
