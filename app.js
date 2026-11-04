@@ -90,3 +90,22 @@ reducedMotion.addEventListener('change', () => { if (reducedMotion.matches) setR
 setInterval(() => {
   if (rotating && !document.hidden && !gallery.matches(':hover,:focus-within')) move(selected+1);
 }, 5500);
+
+// Spotlight video: autoplay muted; tap to play with sound; tap video to pause/resume
+const spotVideo = document.querySelector('#spot-video');
+const spotPlay = document.querySelector('#spot-play');
+if (spotVideo && spotPlay) {
+  const tryPlay = () => spotVideo.play().catch(() => {});
+  tryPlay();
+  spotPlay.addEventListener('click', () => {
+    spotVideo.muted = false;
+    spotVideo.currentTime = 0;
+    spotVideo.controls = true;
+    tryPlay();
+    spotPlay.hidden = true;
+  });
+  spotVideo.addEventListener('click', () => {
+    if (!spotVideo.controls) { spotPlay.click(); return; }
+  });
+  if (reducedMotion.matches) { spotVideo.pause(); spotVideo.removeAttribute('autoplay'); }
+}

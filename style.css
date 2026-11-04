@@ -201,6 +201,17 @@ select { padding: 12px; min-height: 48px; background: var(--panel); border: 1px 
 .spotlight .section-title h2 { margin-bottom: 6px; }
 .spot-sub { margin: 0 0 24px; color: var(--muted); font-size: 1.1rem; font-weight: 700; letter-spacing: .04em; }
 
+.video-play {
+  position: absolute; left: 50%; bottom: 16px; translate: -50% 0;
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px; padding: 8px 16px 8px 12px;
+  background: var(--pink); color: #100710; border: 0; border-radius: 40px;
+  font-weight: 850; font-size: .85rem; white-space: nowrap;
+  box-shadow: 0 8px 24px #0008;
+}
+.video-play.playing span::after { content: ""; }
+.video-play[hidden] { display: none; }
+
 /* Awareness + giving */
 .awareness {
   border-top: 1px solid var(--line);
@@ -254,6 +265,8 @@ select { padding: 12px; min-height: 48px; background: var(--panel); border: 1px 
   .swatches button { width: 40px; height: 40px; }
   .rotation { padding: 8px 12px; }
   .spot-card { border-radius: 10px; }
+  .video-play { font-size: .72rem; padding: 6px 12px 6px 8px; gap: 4px; bottom: 10px; }
+  .video-play svg { width: 20px; height: 20px; }
   .spot-card figcaption { left: 8px; top: 8px; padding: 4px 8px; font-size: .6rem; gap: 6px; }
   .spot-card figcaption span + * { display: none; }
 

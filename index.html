@@ -90,7 +90,13 @@
           <figcaption><span>No. 4</span><em>Slot WR/DB</em></figcaption>
         </figure>
         <figure class="spot-card">
-          <video src="assets/spotlight-video.mp4" poster="assets/spotlight-poster.jpg" autoplay muted loop playsinline controls preload="metadata" aria-label="Game footage of Sophia playing flag football"></video>
+          <video id="spot-video" poster="assets/spotlight-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="Game footage of Sophia playing flag football">
+            <source src="assets/spotlight-video.mp4" type="video/mp4">
+          </video>
+          <button class="video-play" id="spot-play" type="button" aria-label="Play video with sound">
+            <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            <span>Tap for sound</span>
+          </button>
           <figcaption><span>Game film</span><em>Under the lights</em></figcaption>
         </figure>
         <blockquote class="spot-quote">
