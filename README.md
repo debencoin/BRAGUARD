@@ -28,7 +28,7 @@ Then visit http://localhost:8000.
 | `style.css` | Styles and breakpoints |
 | `app.js` | Color carousel, swatches, slideshow, mobile menu, checkout button |
 | `checkout.js` | Stripe Payment Links |
-| `assets/` | Logo, hero image and 11 colorway photos |
+| `assets/` | Logo, hero image, 10 colorway photos and spotlight media |
 
 ## Enable checkout
 
