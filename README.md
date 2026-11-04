@@ -32,7 +32,7 @@ Then visit http://localhost:8000.
 
 ## Enable checkout
 
-Add your live Stripe Payment Links in `checkout.js`, keyed by the exact color name and size, for example `"Royal Blue|M"`. Set up each link in Stripe for the right variant at $49.99 USD. Payment Links are public URLs; never put Stripe secret keys in this repo. Until a link is added, checkout shows a pending message.
+Add your live Stripe Payment Links in `checkout.js`, keyed by the exact color name and size, for example `"Royal Blue|M"`, or `"Cal|M"` for the college edition. Set up each link in Stripe for the right variant at $49.99 USD. Payment Links are public URLs; never put Stripe secret keys in this repo. Until a link is added, checkout shows a pending message.
 
 ## Deploy
 

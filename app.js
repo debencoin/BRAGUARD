@@ -110,3 +110,60 @@ if (spotVideo && spotPlay) {
   });
   if (reducedMotion.matches) { spotVideo.pause(); spotVideo.removeAttribute('autoplay'); }
 }
+
+// College edition carousel
+(() => {
+  const schools = [
+    ['Cal', 'cal', 'Cal blue and gold with gold piping.'],
+    ['ASU', 'asu', 'ASU maroon and gold with gold piping.'],
+    ['Arizona', 'arizona', 'Arizona navy and red with red piping.']
+  ];
+  const rail = document.querySelector('.school-rail');
+  if (!rail) return;
+  const pills = document.querySelector('.school-pills');
+  const name = document.querySelector('#school-name');
+  const desc = document.querySelector('#school-desc');
+  const counter = document.querySelector('.school-counter');
+  const size = document.querySelector('#school-size');
+  const status = document.querySelector('#school-status');
+  const imgs = [], btns = [];
+  let current = 0;
+  function show(i) {
+    current = i;
+    name.textContent = schools[i][0];
+    desc.textContent = schools[i][2] + ' Same four-pad protection, racerback straps and wide underband.';
+    counter.textContent = (i + 1) + ' / ' + schools.length;
+    btns.forEach((b, j) => b.setAttribute('aria-pressed', j === i));
+  }
+  function go(i) {
+    i = (i + schools.length) % schools.length;
+    show(i);
+    rail.scrollTo({ left: imgs[i].offsetLeft, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+  }
+  schools.forEach(([label, file], i) => {
+    const img = document.createElement('img');
+    img.src = 'assets/school-' + file + '.webp';
+    img.alt = label + ' college edition BRAGUARD sports bra';
+    img.width = 900; img.height = 900; img.loading = 'lazy'; img.decoding = 'async'; img.draggable = false;
+    rail.append(img); imgs.push(img);
+    const b = document.createElement('button');
+    b.type = 'button'; b.textContent = label;
+    b.onclick = () => go(i);
+    pills.append(b); btns.push(b);
+  });
+  rail.addEventListener('scroll', () => {
+    if (rail.clientWidth) show(Math.min(schools.length - 1, Math.round(rail.scrollLeft / rail.clientWidth)));
+  }, { passive: true });
+  document.querySelector('.school-prev').onclick = () => go(current - 1);
+  document.querySelector('.school-next').onclick = () => go(current + 1);
+  rail.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); go(current + (e.key === 'ArrowRight' ? 1 : -1)); }
+  });
+  document.querySelector('#school-buy').onclick = () => {
+    if (!size.value) { status.textContent = 'Choose a size to continue.'; size.focus(); return; }
+    const link = window.BRAGUARD_PAYMENT_LINKS[schools[current][0] + '|' + size.value];
+    if (typeof link === 'string' && /^https:\/\/buy\.stripe\.com\/[A-Za-z0-9_]+$/.test(link)) location.assign(link);
+    else status.textContent = 'Live checkout is pending. No payment has been taken.';
+  };
+  show(0);
+})();

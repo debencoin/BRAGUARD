@@ -153,6 +153,18 @@ label { display: block; font-weight: 700; margin-bottom: 6px; }
 select, .buy { display: flex; width: 100%; margin-bottom: 10px; }
 select { padding: 12px; min-height: 48px; background: var(--panel); border: 1px solid #555; border-radius: 0; }
 
+/* College edition */
+.schools { border-top: 1px solid var(--line); }
+.school-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+.school-pills button {
+  min-height: 44px; padding: 8px 18px;
+  background: var(--panel); border: 1px solid #555; border-radius: 40px;
+  font-weight: 800; letter-spacing: .02em;
+}
+.school-pills button[aria-pressed="true"] { border-color: var(--pink); background: var(--pink); color: #100710; }
+.school-gallery .rail img { aspect-ratio: 1; }
+#school-status { color: var(--muted); font-size: .9rem; }
+
 /* Player spotlight */
 .spotlight {
   max-width: 1370px; margin: auto;
