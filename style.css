@@ -241,6 +241,52 @@ select { padding: 12px; min-height: 48px; background: var(--panel); border: 1px 
 .video-play.playing span::after { content: ""; }
 .video-play[hidden] { display: none; }
 
+/* Founding Player program */
+.ambassadors {
+  max-width: 1370px; margin: auto;
+  padding: clamp(40px, 6vw, 95px) var(--gutter);
+  border-top: 1px solid var(--line);
+}
+.amb-lead { color: var(--muted); max-width: 640px; margin: 0 0 28px; font-size: 1.05rem; }
+.tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: clamp(32px, 5vw, 56px); }
+.tier { border: 1px solid var(--line); border-radius: 12px; padding: 20px; background: var(--panel); }
+.tier p { margin: 0; }
+.tier-top { border-color: var(--pink); }
+.tier-name { color: var(--pink); font-size: .74rem; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; }
+.tier-rate { font-size: clamp(2.6rem, 6vw, 4rem); font-weight: 900; letter-spacing: -.05em; line-height: 1.05; margin: 6px 0 !important; font-variant-numeric: tabular-nums; }
+.tier-earn { font-weight: 700; }
+.tier-when { color: var(--muted); font-size: .9rem; margin-top: 4px !important; }
+.amb-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(24px, 5vw, 64px); align-items: start; }
+.amb-perks h3, .amb-form h3 { font-size: 1.4rem; letter-spacing: -.02em; margin: 0 0 12px; }
+.amb-perks ul, .amb-perks ol { margin: 0 0 24px; padding-left: 20px; display: grid; gap: 6px; }
+.amb-fine { color: var(--muted); font-size: .85rem; border-left: 2px solid var(--pink); padding-left: 12px; }
+.amb-form { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: clamp(18px, 3vw, 28px); display: grid; gap: 14px; }
+.field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.field-row[hidden] { display: none; }
+.field { display: grid; gap: 6px; margin: 0; min-width: 0; border: 0; padding: 0; }
+.field legend { font-weight: 700; margin-bottom: 6px; padding: 0; }
+.amb-form input:not([type=radio]):not([type=checkbox]), .amb-form textarea, .amb-form select {
+  width: 100%; padding: 12px; min-height: 46px; background: #0b0b0e; border: 1px solid #555; color: #fff; font: inherit; border-radius: 0;
+}
+.amb-form textarea { min-height: 90px; resize: vertical; }
+.amb-form input:focus-visible, .amb-form textarea:focus-visible { outline: 3px solid var(--pink); outline-offset: 2px; }
+label.inline { display: inline-flex; align-items: center; gap: 8px; font-weight: 500; margin-right: 18px; min-height: 32px; }
+label.check { margin: 0; }
+.amb-form input[type=radio], .amb-form input[type=checkbox] { width: 20px; height: 20px; accent-color: var(--pink); }
+.amb-form .btn { width: 100%; }
+#amb-status { margin: 0; color: var(--muted); font-size: .9rem; }
+#amb-status.ok { color: #6ee7a8; }
+#amb-status.err { color: #ff8a8a; }
+.spot-cta { display: inline-block; margin-top: 6px; color: var(--pink); font-weight: 800; text-decoration: underline; }
+
+@media (max-width: 760px) {
+  .tiers { grid-template-columns: 1fr; gap: 10px; }
+  .tier { display: grid; grid-template-columns: auto 1fr; column-gap: 16px; align-items: center; }
+  .tier-rate { grid-column: 1; grid-row: 1 / span 3; font-size: 2.6rem; }
+  .tier-name, .tier-earn, .tier-when { grid-column: 2; }
+  .amb-grid, .field-row { grid-template-columns: 1fr; }
+}
+
 /* Awareness + giving */
 .awareness {
   border-top: 1px solid var(--line);

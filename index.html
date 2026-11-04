@@ -28,6 +28,7 @@
       <a href="#highschool">High school</a>
       <a href="#preorder">Preorder</a>
       <a href="#spotlight">Spotlight</a>
+      <a href="#ambassadors">Ambassadors</a>
       <a href="#awareness">Breast safety</a>
       <a href="#giving">Giving back</a>
       <a class="outline" href="#shop">Shop the sports bra ↗</a>
@@ -199,13 +200,104 @@
         <blockquote class="spot-quote">
           <p>“Fielding punts used to make me flinch. With BRAGUARD I catch the ball at my chest and take off. I play my fastest without worrying about getting hit, and I let the play happen on the field.”</p>
           <footer>Sophia Silverstein · Slot WR/DB</footer>
+          <a class="spot-cta" href="#ambassadors">Become a Founding Player ↓</a>
         </blockquote>
+      </div>
+    </section>
+
+    <section id="ambassadors" class="ambassadors" aria-labelledby="amb-title">
+      <div class="section-title">
+        <p class="tag">07 / FOUNDING PLAYER PROGRAM</p>
+        <h2 id="amb-title">Play in it. Rep it. Earn up to 40%.</h2>
+        <p class="amb-lead">Join Sophia as a BRAGUARD Founding Player. Get your own code, share it with your team and followers, and earn 20–40% of every sale it brings in.</p>
+      </div>
+
+      <div class="tiers" role="list">
+        <div class="tier" role="listitem">
+          <p class="tier-name">Rookie</p>
+          <p class="tier-rate">20%</p>
+          <p class="tier-earn"><span data-rate="0.20"></span> per bra</p>
+          <p class="tier-when">From your first sale</p>
+        </div>
+        <div class="tier" role="listitem">
+          <p class="tier-name">Starter</p>
+          <p class="tier-rate">30%</p>
+          <p class="tier-earn"><span data-rate="0.30"></span> per bra</p>
+          <p class="tier-when">After 25 sales</p>
+        </div>
+        <div class="tier tier-top" role="listitem">
+          <p class="tier-name">All-American</p>
+          <p class="tier-rate">40%</p>
+          <p class="tier-earn"><span data-rate="0.40"></span> per bra</p>
+          <p class="tier-when">After 100 sales</p>
+        </div>
+      </div>
+
+      <div class="amb-grid">
+        <div class="amb-perks">
+          <h3>What founding players get</h3>
+          <ul>
+            <li>A personal discount code for teammates, family and followers</li>
+            <li>Commission on every sale made with your code, paid monthly</li>
+            <li>A free BRAGUARD sports bra in your color</li>
+            <li>Early access to new colors and preorder drops</li>
+            <li>A chance to be featured in the Player Spotlight</li>
+          </ul>
+          <h3>How it works</h3>
+          <ol>
+            <li>Apply below. We review every application.</li>
+            <li>Once approved, you get your code and starter kit.</li>
+            <li>Share BRAGUARD on game days, practice and social.</li>
+            <li>Move up a tier as your sales grow.</li>
+          </ol>
+          <p class="amb-fine">Players under 18 need a parent or guardian to approve and receive payments. Posts about BRAGUARD must say you're an ambassador (for example #BRAGUARDambassador). Don't use school names, logos or uniforms in BRAGUARD posts; most state high school associations don't allow it in NIL deals.</p>
+        </div>
+
+        <form id="amb-form" class="amb-form" novalidate>
+          <h3>Apply to be a Founding Player</h3>
+          <div class="field-row">
+            <div class="field"><label for="amb-name">Full name</label><input id="amb-name" name="name" required autocomplete="name"></div>
+            <div class="field"><label for="amb-email">Email</label><input id="amb-email" name="email" type="email" required autocomplete="email"></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="amb-social">Instagram or TikTok</label><input id="amb-social" name="social" placeholder="@yourhandle"></div>
+            <div class="field"><label for="amb-state">State</label><input id="amb-state" name="state" autocomplete="address-level1"></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="amb-team">Team or club</label><input id="amb-team" name="team"></div>
+            <div class="field"><label for="amb-position">Position</label><input id="amb-position" name="position" placeholder="Slot WR/DB"></div>
+          </div>
+          <div class="field">
+            <label for="amb-level">Level</label>
+            <select id="amb-level" name="level" required>
+              <option value="">Choose one</option>
+              <option>Youth (under 14)</option>
+              <option>High school</option>
+              <option>College</option>
+              <option>Adult / club</option>
+              <option>Coach or parent</option>
+            </select>
+          </div>
+          <fieldset class="field">
+            <legend>Are you 18 or older?</legend>
+            <label class="inline"><input type="radio" name="adult" value="yes" id="amb-adult-yes" required> Yes</label>
+            <label class="inline"><input type="radio" name="adult" value="no" id="amb-adult-no"> No</label>
+          </fieldset>
+          <div class="field-row guardian" hidden>
+            <div class="field"><label for="amb-guardian">Parent or guardian name</label><input id="amb-guardian" name="guardian"></div>
+            <div class="field"><label for="amb-guardian-email">Parent or guardian email</label><input id="amb-guardian-email" name="guardian_email" type="email"></div>
+          </div>
+          <div class="field"><label for="amb-why">Why do you want to rep BRAGUARD?</label><textarea id="amb-why" name="why" rows="3"></textarea></div>
+          <label class="inline check"><input type="checkbox" id="amb-agree" name="agree" required> I agree to disclose that I'm a BRAGUARD ambassador when I post.</label>
+          <button class="btn" type="submit">Apply now <span aria-hidden="true">↗</span></button>
+          <p id="amb-status" role="status"></p>
+        </form>
       </div>
     </section>
 
     <section id="awareness" class="awareness">
       <div>
-        <p class="tag">07 / BREAST SAFETY AWARENESS</p>
+        <p class="tag">08 / BREAST SAFETY AWARENESS</p>
         <h2>Protecting womanhood starts with taking breast safety seriously.</h2>
       </div>
       <div>
@@ -218,7 +310,7 @@
 
     <section id="giving" class="awareness" aria-labelledby="give-title">
       <div>
-        <p class="tag">08 / GIVING BACK</p>
+        <p class="tag">09 / GIVING BACK</p>
         <h2 id="give-title">Support breast cancer awareness and girls’ flag football.</h2>
       </div>
       <div>

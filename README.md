@@ -37,3 +37,7 @@ Add your live Stripe Payment Links in `checkout.js`, keyed by the exact color na
 ## Deploy
 
 Any static host works. For GitHub Pages: **Settings › Pages › Deploy from a branch › `main` / root**.
+
+## Founding Player applications
+
+The ambassador form posts JSON to `window.BRAGUARD_AMBASSADOR_ENDPOINT` in `checkout.js`. Paste a form endpoint there (for example a free Formspree form URL) to receive applications by email. Until it is set, the form tells applicants that applications open soon and sends nothing.

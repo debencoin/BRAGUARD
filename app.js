@@ -276,3 +276,45 @@ schoolCarousel('hs', [
   [rail, sw, document.querySelector('.pre-prev'), document.querySelector('.pre-next'), size].forEach(el => { el.addEventListener('pointerdown', stop); el.addEventListener('keydown', stop); });
   setInterval(() => { if (auto && !document.hidden && !rail.parentElement.matches(':hover,:focus-within')) go(current + 1); }, 5000);
 })();
+
+// Founding Player program: tier earnings and application form
+(() => {
+  const price = 49.99;
+  document.querySelectorAll('[data-rate]').forEach(el => {
+    el.textContent = '$' + (price * parseFloat(el.dataset.rate)).toFixed(2);
+  });
+  const form = document.querySelector('#amb-form');
+  if (!form) return;
+  const status = document.querySelector('#amb-status');
+  const guardian = form.querySelector('.guardian');
+  form.querySelectorAll('input[name=adult]').forEach(r => r.addEventListener('change', () => {
+    const minor = form.querySelector('#amb-adult-no').checked;
+    guardian.hidden = !minor;
+    guardian.querySelectorAll('input').forEach(i => { i.required = minor; });
+  }));
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    status.className = '';
+    const bad = [...form.querySelectorAll('[required]')].find(el => el.type === 'radio' ? !form.querySelector('input[name=' + el.name + ']:checked') : el.type === 'checkbox' ? !el.checked : !el.value.trim() || (el.type === 'email' && !el.checkValidity()));
+    if (bad) { status.className = 'err'; status.textContent = 'Please fill in ' + (bad.labels && bad.labels[0] ? bad.labels[0].textContent.trim().replace(/\.$/, '') : 'every required field') + '.'; bad.focus(); return; }
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.submitted_at = new Date().toISOString();
+    const endpoint = window.BRAGUARD_AMBASSADOR_ENDPOINT;
+    if (typeof endpoint !== 'string' || !/^https:\/\//.test(endpoint)) {
+      status.className = 'err';
+      status.textContent = 'Applications open soon. Your application was not sent yet, so please check back.';
+      return;
+    }
+    status.textContent = 'Sending…';
+    try {
+      const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) });
+      if (!res.ok) throw new Error(res.status);
+      form.reset(); guardian.hidden = true;
+      status.className = 'ok';
+      status.textContent = 'Application received. We will email you within a week.';
+    } catch (err) {
+      status.className = 'err';
+      status.textContent = 'Your application could not be sent. Please try again in a minute.';
+    }
+  });
+})();
