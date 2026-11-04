@@ -1,4 +1,5 @@
-const variants = [['Royal Blue','#153ef5'],['Red','#e82836'],['Neon Green','#b9ff13'],['Pink','#f54a9d'],['Purple','#753dcc'],['White','#fff'],['All Black','#151515'],['Teal','#00a89e'],['Maroon & Gold','linear-gradient(135deg,#900020 50%,#ffcc00 50%)'],['Black with Gray Padding','linear-gradient(135deg,#151515 50%,#ccc 50%)'],['Maroon with Gray Padding','linear-gradient(135deg,#900020 50%,#ccc 50%)']];
+// [name, swatch, image index] — display order
+const variants = [['All Black','#151515',6],['Pink','#f54a9d',3],['White','#fff',5],['Neon Green','#b9ff13',2],['Royal Blue','#153ef5',0],['Red','#e82836',1],['Maroon & Gold','linear-gradient(135deg,#900020 50%,#ffcc00 50%)',8],['Black with Gray Padding','linear-gradient(135deg,#151515 50%,#ccc 50%)',9],['Maroon with Gray Padding','linear-gradient(135deg,#900020 50%,#ccc 50%)',10],['Purple','#753dcc',4],['Teal','#00a89e',7]];
 const rail = document.querySelector('.rail');
 const swatches = document.querySelector('.swatches');
 const color = document.querySelector('#color');
@@ -33,9 +34,9 @@ function move(index) {
   show(index);
   rail.scrollTo({left:images[index].offsetLeft,behavior:reducedMotion.matches?'instant':'smooth'});
 }
-variants.forEach(([name,hex], index) => {
+variants.forEach(([name,hex,file], index) => {
   const img = document.createElement('img');
-  img.src = 'assets/color-' + index + '.webp';
+  img.src = 'assets/color-' + file + '.webp';
   img.alt = name + ' BRAGUARD padded sports bra';
   img.draggable = false;
   img.width = 900;
