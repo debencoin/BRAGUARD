@@ -134,28 +134,25 @@ if (spotVideo && spotPlay) {
   if (reducedMotion.matches) { spotVideo.pause(); spotVideo.removeAttribute('autoplay'); }
 }
 
-// College edition carousel
-(() => {
-  const schools = [
-    ['Cal', 'cal', 'Cal blue and gold with gold piping.'],
-    ['ASU', 'asu', 'ASU maroon and gold with gold piping.'],
-    ['Arizona', 'arizona', 'Arizona navy and red with red piping.']
-  ];
-  const rail = document.querySelector('.school-rail');
+// School carousels (college and high school editions)
+function schoolCarousel(prefix, schools) {
+  const rail = document.querySelector('.' + prefix + '-rail');
   if (!rail) return;
-  const pills = document.querySelector('.school-pills');
-  const name = document.querySelector('#school-name');
-  const desc = document.querySelector('#school-desc');
-  const counter = document.querySelector('.school-counter');
-  const size = document.querySelector('#school-size');
-  const status = document.querySelector('#school-status');
+  const pills = document.querySelector('.' + prefix + '-pills');
+  const name = document.querySelector('#' + prefix + '-name');
+  const desc = document.querySelector('#' + prefix + '-desc');
+  const counter = document.querySelector('.' + prefix + '-counter');
+  const size = document.querySelector('#' + prefix + '-size');
+  const status = document.querySelector('#' + prefix + '-status');
+  const prev = document.querySelector('.' + prefix + '-prev');
+  const next = document.querySelector('.' + prefix + '-next');
   const imgs = [], btns = [];
   let current = 0;
   function show(i) {
     current = i;
     name.textContent = schools[i][0];
-    desc.textContent = schools[i][2] + ' Same four-pad protection, racerback straps and wide underband.';
-    counter.textContent = (i + 1) + ' / ' + schools.length;
+    desc.textContent = schools[i][2] + ' Front and back views shown with a sample No. 33. Same four-pad protection, racerback straps and wide underband.';
+    if (counter) counter.textContent = (i + 1) + ' / ' + schools.length;
     btns.forEach((b, j) => b.setAttribute('aria-pressed', j === i));
   }
   function go(i) {
@@ -166,8 +163,8 @@ if (spotVideo && spotPlay) {
   schools.forEach(([label, file], i) => {
     const img = document.createElement('img');
     img.src = 'assets/school-' + file + '.webp';
-    img.alt = label + ' college edition BRAGUARD sports bra';
-    img.width = 900; img.height = 900; img.loading = 'lazy'; img.decoding = 'async'; img.draggable = false;
+    img.alt = label + ' BRAGUARD sports bra, front and back';
+    img.width = 1400; img.height = 700; img.loading = 'lazy'; img.decoding = 'async'; img.draggable = false;
     rail.append(img); imgs.push(img);
     const b = document.createElement('button');
     b.type = 'button'; b.textContent = label;
@@ -177,23 +174,37 @@ if (spotVideo && spotPlay) {
   rail.addEventListener('scroll', () => {
     if (rail.clientWidth) show(Math.min(schools.length - 1, Math.round(rail.scrollLeft / rail.clientWidth)));
   }, { passive: true });
-  document.querySelector('.school-prev').onclick = () => go(current - 1);
-  document.querySelector('.school-next').onclick = () => go(current + 1);
+  if (prev) prev.onclick = () => go(current - 1);
+  if (next) next.onclick = () => go(current + 1);
   rail.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); go(current + (e.key === 'ArrowRight' ? 1 : -1)); }
   });
-  document.querySelector('#school-buy').onclick = () => {
+  document.querySelector('#' + prefix + '-buy').onclick = () => {
     if (!size.value) { status.textContent = 'Choose a size to continue.'; size.focus(); return; }
     const link = window.BRAGUARD_PAYMENT_LINKS[schools[current][0] + '|' + size.value];
     if (typeof link === 'string' && /^https:\/\/buy\.stripe\.com\/[A-Za-z0-9_]+$/.test(link)) location.assign(link);
     else status.textContent = 'Live checkout is pending. No payment has been taken.';
   };
   show(0);
+  if (schools.length < 2) return;
   let auto = !reducedMotion.matches;
   const stop = () => { auto = false; };
-  [rail, pills, document.querySelector('.school-prev'), document.querySelector('.school-next'), size].forEach(el => { el.addEventListener('pointerdown', stop); el.addEventListener('keydown', stop); });
+  [rail, pills, prev, next, size].filter(Boolean).forEach(el => { el.addEventListener('pointerdown', stop); el.addEventListener('keydown', stop); });
   setInterval(() => { if (auto && !document.hidden && !rail.parentElement.matches(':hover,:focus-within')) go(current + 1); }, 5000);
-})();
+}
+schoolCarousel('school', [
+  ['Cal', 'cal', 'Cal blue and gold with gold piping.'],
+  ['ASU', 'asu', 'ASU maroon and gold with gold piping.'],
+  ['Arizona', 'arizona', 'Arizona navy and red with red piping.'],
+  ['USC', 'usc', 'USC cardinal and gold with gold piping.'],
+  ['Washington', 'washington', 'Washington purple and gold with gold piping.'],
+  ['Stanford', 'stanford', 'Stanford cardinal and white with white piping.'],
+  ['Oregon', 'oregon', 'Oregon green and yellow with yellow piping.'],
+  ['UCLA', 'ucla', 'UCLA blue and gold with gold piping.']
+]);
+schoolCarousel('hs', [
+  ['Hamilton', 'hamilton', 'Hamilton black and maroon with maroon and silver piping.']
+]);
 
 // Preorder carousel (coming soon)
 (() => {
