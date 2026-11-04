@@ -259,24 +259,42 @@
             <div class="field"><label for="amb-name">Full name</label><input id="amb-name" name="name" required autocomplete="name"></div>
             <div class="field"><label for="amb-email">Email</label><input id="amb-email" name="email" type="email" required autocomplete="email"></div>
           </div>
+          <div class="field-row three">
+            <div class="field"><label for="amb-ig">Instagram</label><input id="amb-ig" name="instagram" placeholder="@handle"></div>
+            <div class="field"><label for="amb-tt">TikTok</label><input id="amb-tt" name="tiktok" placeholder="@handle"></div>
+            <div class="field"><label for="amb-x">X / Twitter</label><input id="amb-x" name="x_twitter" placeholder="@handle"></div>
+          </div>
           <div class="field-row">
-            <div class="field"><label for="amb-social">Instagram or TikTok</label><input id="amb-social" name="social" placeholder="@yourhandle"></div>
+            <div class="field">
+              <label for="amb-level">School level</label>
+              <select id="amb-level" name="level" required>
+                <option value="">Choose one</option>
+                <option>High school</option>
+                <option>College</option>
+                <option>Middle school / youth</option>
+                <option>Adult / club</option>
+                <option>Coach or parent</option>
+              </select>
+            </div>
+            <div class="field"><label for="amb-school">School name</label><input id="amb-school" name="school"></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="amb-grad">Graduation year</label><input id="amb-grad" name="grad_year" inputmode="numeric" placeholder="2028"></div>
             <div class="field"><label for="amb-state">State</label><input id="amb-state" name="state" autocomplete="address-level1"></div>
           </div>
           <div class="field-row">
             <div class="field"><label for="amb-team">Team or club</label><input id="amb-team" name="team"></div>
             <div class="field"><label for="amb-position">Position</label><input id="amb-position" name="position" placeholder="Slot WR/DB"></div>
           </div>
-          <div class="field">
-            <label for="amb-level">Level</label>
-            <select id="amb-level" name="level" required>
-              <option value="">Choose one</option>
-              <option>Youth (under 14)</option>
-              <option>High school</option>
-              <option>College</option>
-              <option>Adult / club</option>
-              <option>Coach or parent</option>
-            </select>
+          <div class="field-row">
+            <div class="field">
+              <label for="amb-size">Sports bra size</label>
+              <select id="amb-size" name="size" required>
+                <option value="">Choose a size</option>
+                <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option>
+              </select>
+            </div>
+            <div class="field"><label for="amb-color">Favorite color</label><input id="amb-color" name="color" placeholder="All Black"></div>
           </div>
           <fieldset class="field">
             <legend>Are you 18 or older?</legend>
