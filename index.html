@@ -25,10 +25,11 @@
     <nav id="site-nav" class="site-nav" aria-label="Main navigation">
       <a href="#shop">Shop</a>
       <a href="#schools">College</a>
+      <a href="#preorder">Preorder</a>
       <a href="#spotlight">Spotlight</a>
       <a href="#awareness">Breast safety</a>
       <a href="#giving">Giving back</a>
-      <a class="outline" href="#shop">Shop the bra ↗</a>
+      <a class="outline" href="#shop">Shop the sports bra ↗</a>
     </nav>
   </header>
 
@@ -37,7 +38,7 @@
       <div class="hero-copy">
         <p class="tag">01 / BUILT FOR FLAG FOOTBALL</p>
         <h1>PLAY FEARLESS.<br><em>STAY PROTECTED.</em></h1>
-        <p>BRAGUARD™. Women’s protection meets performance.</p>
+        <p>BRAGUARD™ Sports Bra. Women’s Protection Meets Performance.</p>
         <a class="btn" href="#shop">Find your color <span aria-hidden="true">↗</span></a>
       </div>
     </section>
@@ -75,7 +76,7 @@
             <option value="">Choose a size</option>
             <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option>
           </select>
-          <button class="btn buy" id="buy" type="button">Pay with Stripe <span aria-hidden="true">↗</span></button>
+          <button class="btn buy" id="buy" type="button">Purchase <span aria-hidden="true">↗</span></button>
           <p id="status" role="status">Store preview. Live checkout is pending merchant setup.</p>
         </div>
       </div>
@@ -109,15 +110,46 @@
             <option value="">Choose a size</option>
             <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option>
           </select>
-          <button class="btn buy" id="school-buy" type="button">Pay with Stripe <span aria-hidden="true">↗</span></button>
+          <button class="btn buy" id="school-buy" type="button">Purchase <span aria-hidden="true">↗</span></button>
           <p id="school-status" class="status" role="status">Store preview. Live checkout is pending merchant setup.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="preorder" class="shop schools" aria-labelledby="preorder-title">
+      <div class="section-title">
+        <p class="tag">04 / COMING SOON</p>
+        <h2 id="preorder-title">Preorder the next drop.</h2>
+      </div>
+      <div class="product">
+        <div class="gallery pre-gallery" aria-label="Swipeable preorder carousel">
+          <div class="rail pre-rail" tabindex="0" aria-label="Preorder style photos"></div>
+          <button class="arrow pre-prev prev" type="button" aria-label="Previous style">‹</button>
+          <button class="arrow pre-next next" type="button" aria-label="Next style">›</button>
+          <span class="soon-badge">Coming soon</span>
+          <div class="counter pre-counter" aria-live="polite"></div>
+        </div>
+        <div class="details">
+          <p class="tag">BRAGUARD™ / PREORDER</p>
+          <h3>The BRAGUARD Sports Bra</h3>
+          <div class="price">$49.99 <small>USD</small></div>
+          <p>Reserve your color now. Preorders ship as soon as the next production run is ready.</p>
+          <p class="color-label">Color <strong id="pre-color"></strong></p>
+          <div class="swatches pre-swatches" role="group" aria-label="Choose preorder color"></div>
+          <label for="pre-size">Size</label>
+          <select id="pre-size">
+            <option value="">Choose a size</option>
+            <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option>
+          </select>
+          <button class="btn buy" id="pre-buy" type="button">Preorder <span aria-hidden="true">↗</span></button>
+          <p id="pre-status" class="status" role="status">Preorders open soon.</p>
         </div>
       </div>
     </section>
 
     <section id="spotlight" class="spotlight" aria-labelledby="spotlight-title">
       <div class="section-title">
-        <p class="tag">04 / PLAYER SPOTLIGHT</p>
+        <p class="tag">05 / PLAYER SPOTLIGHT</p>
         <h2 id="spotlight-title">Sophia Silverstein</h2>
         <p class="spot-sub">Soph · Slot WR/DB</p>
       </div>
@@ -145,7 +177,7 @@
 
     <section id="awareness" class="awareness">
       <div>
-        <p class="tag">05 / BREAST SAFETY AWARENESS</p>
+        <p class="tag">06 / BREAST SAFETY AWARENESS</p>
         <h2>Protecting womanhood starts with taking breast safety seriously.</h2>
       </div>
       <div>
@@ -158,7 +190,7 @@
 
     <section id="giving" class="awareness" aria-labelledby="give-title">
       <div>
-        <p class="tag">06 / GIVING BACK</p>
+        <p class="tag">07 / GIVING BACK</p>
         <h2 id="give-title">Support breast cancer awareness and girls’ flag football.</h2>
       </div>
       <div>
