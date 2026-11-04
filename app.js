@@ -1,5 +1,11 @@
-// [name, swatch, image file] in display order
-const variants = [['All Black','#151515','black'],['Pink','#ff2fa0','pink'],['White','#ffffff','white'],['Neon Green','#b9ff13','neon'],['Royal Blue','#1f45e0','blue'],['Red','#e82836','red'],['Maroon','#7a1428','maroon'],['Navy','#1c2a5c','navy'],['Purple','#8a2be2','purple'],['Teal','#16a99a','teal']];
+// Styles, each with [name, swatch, image file] in display order
+const styles = [
+  { name: 'Tonal', key: '', colors: [['All Black','#151515','black'],['Pink','#ff2fa0','pink'],['White','#ffffff','white'],['Neon Green','#b9ff13','neon'],['Royal Blue','#1f45e0','blue'],['Red','#e82836','red'],['Maroon','#7a1428','maroon'],['Navy','#1c2a5c','navy'],['Purple','#8a2be2','purple'],['Teal','#16a99a','teal']] },
+  { name: 'Gray Pads', key: 'Gray Pads ', colors: [['All Black','#151515','gp-black'],['White','#ffffff','gp-white'],['Neon Green','#7dff00','gp-neon'],['Royal Blue','#1f45e0','gp-blue'],['Red','#b0101c','gp-red']] },
+  { name: 'Black Piping', key: 'Black Piping ', colors: [['White','#ffffff','bp-white'],['Neon Green','#a6ff1a','bp-neon'],['Royal Blue','#1f45e0','bp-blue'],['Red','#e8101c','bp-red'],['Purple','#7a1fd6','bp-purple'],['Teal','#16b0a6','bp-teal']] }
+];
+let styleIndex = 0;
+let variants = styles[0].colors;
 const rail = document.querySelector('.rail');
 const swatches = document.querySelector('.swatches');
 const color = document.querySelector('#color');
@@ -21,8 +27,8 @@ nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu
 document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 matchMedia('(min-width: 761px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
 
-const buttons = [];
-const images = [];
+let buttons = [];
+let images = [];
 function show(index) {
   selected = index;
   color.textContent = variants[index][0];
@@ -34,26 +40,44 @@ function move(index) {
   show(index);
   rail.scrollTo({left:images[index].offsetLeft,behavior:reducedMotion.matches?'instant':'smooth'});
 }
-variants.forEach(([name,hex,file], index) => {
-  const img = document.createElement('img');
-  img.src = 'assets/bra-' + file + '.webp';
-  img.alt = name + ' BRAGUARD padded sports bra';
-  img.draggable = false;
-  img.width = 410;
-  img.height = 492;
-  img.decoding = 'async';
-  if (index > 0) img.loading = 'lazy';
-  rail.append(img);
-  images.push(img);
-  const button = document.createElement('button');
-  button.type = 'button';
-  button.title = name;
-  button.setAttribute('aria-label',name);
-  button.style.setProperty('--swatch',hex);
-  button.onclick = () => move(index);
-  swatches.append(button);
-  buttons.push(button);
+function buildColors() {
+  variants = styles[styleIndex].colors;
+  rail.replaceChildren(); swatches.replaceChildren();
+  buttons = []; images = [];
+  variants.forEach(([name,hex,file], index) => {
+    const img = document.createElement('img');
+    img.src = 'assets/bra-' + file + '.webp';
+    img.alt = name + ' ' + styles[styleIndex].name + ' BRAGUARD padded sports bra';
+    img.draggable = false;
+    img.decoding = 'async';
+    if (index > 0) img.loading = 'lazy';
+    rail.append(img);
+    images.push(img);
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.title = name;
+    button.setAttribute('aria-label',name);
+    button.style.setProperty('--swatch',hex);
+    button.onclick = () => move(index);
+    swatches.append(button);
+    buttons.push(button);
+  });
+  rail.scrollLeft = 0;
+  show(0);
+}
+// Style picker
+const stylePills = document.querySelector('.style-pills');
+const styleName = document.querySelector('#style-name');
+const styleButtons = styles.map((s, i) => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.textContent = s.name;
+  b.onclick = () => { styleIndex = i; styleName.textContent = s.name; styleButtons.forEach((x,j) => x.setAttribute('aria-pressed', j === i)); buildColors(); };
+  stylePills.append(b);
+  return b;
 });
+styleButtons[0].setAttribute('aria-pressed', true);
+styleName.textContent = styles[0].name;
+buildColors();
 rail.addEventListener('scroll', () => {
   if (rail.clientWidth) show(Math.min(variants.length-1,Math.round(rail.scrollLeft/rail.clientWidth)));
 },{passive:true});
@@ -67,11 +91,10 @@ rail.addEventListener('keydown', event => {
 });
 document.querySelector('#buy').onclick = () => {
   if (!size.value) { status.textContent = 'Choose a size to continue.'; size.focus(); return; }
-  const link = window.BRAGUARD_PAYMENT_LINKS[variants[selected][0]+'|'+size.value];
+  const link = window.BRAGUARD_PAYMENT_LINKS[styles[styleIndex].key + variants[selected][0]+'|'+size.value];
   if (typeof link === 'string' && /^https:\/\/buy\.stripe\.com\/[A-Za-z0-9_]+$/.test(link)) location.assign(link);
   else status.textContent = 'Live checkout is pending. No payment has been taken.';
 };
-show(0);
 const gallery = document.querySelector('.gallery');
 const rotation = document.querySelector('.rotation');
 let rotating = !reducedMotion.matches;
@@ -81,7 +104,7 @@ function setRotation(value) {
 }
 setRotation(rotating);
 rotation.onclick = () => setRotation(!rotating);
-[rail,swatches,document.querySelector('.prev'),document.querySelector('.next')].forEach(element => {
+[rail,swatches,stylePills,document.querySelector('.prev'),document.querySelector('.next')].forEach(element => {
   element.addEventListener('pointerdown', () => setRotation(false));
   element.addEventListener('keydown', () => setRotation(false));
 });
