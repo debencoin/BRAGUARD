@@ -25,7 +25,7 @@ function setMenu(open) {
 menuToggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
 nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-matchMedia('(min-width: 761px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
+matchMedia('(min-width: 1381px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
 
 let buttons = [];
 let images = [];
@@ -317,4 +317,46 @@ schoolCarousel('hs', [
       status.textContent = 'Your application could not be sent. Please try again in a minute.';
     }
   });
+})();
+
+// BRAGUARD 1.0 Racerback photo carousel
+(() => {
+  const rail = document.querySelector('.rb-rail');
+  if (!rail) return;
+  const imgs = [...rail.querySelectorAll('img')];
+  const counter = document.querySelector('.rb-counter');
+  let current = 0;
+  const show = i => { current = i; if (counter) counter.textContent = (i + 1) + ' / ' + imgs.length; };
+  const go = i => {
+    i = (i + imgs.length) % imgs.length;
+    show(i);
+    rail.scrollTo({ left: imgs[i].offsetLeft, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+  };
+  rail.addEventListener('scroll', () => {
+    if (rail.clientWidth) show(Math.min(imgs.length - 1, Math.round(rail.scrollLeft / rail.clientWidth)));
+  }, { passive: true });
+  const prev = document.querySelector('.rb-prev'), next = document.querySelector('.rb-next');
+  prev.onclick = () => go(current - 1);
+  next.onclick = () => go(current + 1);
+  rail.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); go(current + (e.key === 'ArrowRight' ? 1 : -1)); }
+  });
+  show(0);
+  let auto = !reducedMotion.matches;
+  const stop = () => { auto = false; };
+  [rail, prev, next, document.querySelector('#rb-size')].filter(Boolean).forEach(el => { el.addEventListener('pointerdown', stop); el.addEventListener('keydown', stop); });
+  setInterval(() => { if (auto && !document.hidden && !rail.parentElement.matches(':hover,:focus-within')) go(current + 1); }, 5000);
+})();
+
+// Static-site fallback for the 1.0 Racerback button. On braguards.com,
+// stripe-checkout.js (loaded after this file) replaces this handler.
+(() => {
+  const button = document.querySelector('#rb-buy');
+  const size = document.querySelector('#rb-size');
+  const status = document.querySelector('#rb-status');
+  if (!button || !size || !status) return;
+  button.onclick = () => {
+    if (!size.value) { status.textContent = 'Choose a size to continue.'; size.focus(); return; }
+    status.textContent = 'Checkout opens soon. No payment has been taken.';
+  };
 })();

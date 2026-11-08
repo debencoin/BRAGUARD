@@ -365,3 +365,43 @@ label.check { margin: 0; }
 /* Front/back school renders read better full width */
 #schools .product, #highschool .product { grid-template-columns: 1fr; }
 #schools .details, #highschool .details { max-width: 720px; }
+
+/* Social links */
+.socials { display: flex; flex-wrap: wrap; gap: 10px; }
+.social {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+  padding: 6px 14px 6px 6px; border-radius: 40px; background: var(--panel);
+  border: 1px solid var(--line); color: #fff; font-weight: 700; font-size: .9rem;
+}
+.social:hover { border-color: var(--pink); }
+.social svg, .social i {
+  width: 32px !important; height: 32px; padding: 7px; border-radius: 50%; box-sizing: border-box; color: #fff; flex: none;
+}
+.social.ig svg, .social.ig i { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.social.tt svg, .social.tt i { background: #000; filter: drop-shadow(1.5px 1.5px 0 #fe2c55) drop-shadow(-1.5px -1.5px 0 #25f4ee); }
+.social.xx svg, .social.xx i { background: #000; border: 1px solid #444; }
+.follow-label { margin: 22px 0 10px; color: var(--pink); font-size: .74rem; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; }
+.site-footer .socials { justify-content: center; }
+
+/* BRAGUARD 1.0 Racerback */
+.racerback { border-top: 1px solid var(--line); }
+.rb-gallery .rail img { aspect-ratio: 1; object-fit: contain; background: #8f9094; }
+.features img { background: #fff; }
+
+/* Ten nav links: collapse to the menu button below 1380px, keep each link on one line */
+.site-nav a { white-space: nowrap; }
+@media (max-width: 1380px) {
+  .menu-toggle { display: flex; }
+  .site-nav {
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: #050506; border-bottom: 1px solid var(--line);
+    padding: 8px var(--gutter) 20px;
+    display: none;
+  }
+  .site-nav.open { display: flex; }
+  .site-nav a { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 1.05rem; }
+  .site-nav .outline { margin-top: 14px; text-align: center; border-bottom: 1px solid #54545a; }
+}
+.brand { flex: none; }
+@media (min-width: 1381px) { .site-nav { gap: clamp(14px, 1.6vw, 26px); } }
