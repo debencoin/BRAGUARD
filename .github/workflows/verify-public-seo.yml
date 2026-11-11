@@ -1,0 +1,37 @@
+name: Verify public SEO pages
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 14 * * *'
+permissions:
+  contents: read
+jobs:
+  check-public-pages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check canonical pages and crawler files
+        shell: bash
+        run: |
+          set -euo pipefail
+          urls=(
+            "https://braguards.com/"
+            "https://braguards.com/flag-football-sports-bra.html"
+            "https://braguards.com/womens-flag-football-gear.html"
+            "https://braguards.com/robots.txt"
+            "https://braguards.com/sitemap.xml"
+          )
+          failed=0
+          for url in "${urls[@]}"; do
+            echo "::group::${url}"
+            if curl --fail --location --silent --show-error --max-time 25 --retry 2 --retry-delay 3 --output /tmp/braguard-page --write-out 'HTTP %{http_code} final=%{url_effective} bytes=%{size_download}\n' "${url}"; then
+              if [[ "${url}" == *.xml ]] && ! grep -q '<urlset' /tmp/braguard-page; then echo "::error::Sitemap missing urlset"; failed=1; fi
+              if [[ "${url}" == *.txt ]] && ! grep -qi 'sitemap:' /tmp/braguard-page; then echo "::error::robots.txt missing sitemap"; failed=1; fi
+              if [[ "${url}" == *.html ]] && ! grep -qi '<link rel="canonical"' /tmp/braguard-page; then echo "::error::Article missing canonical"; failed=1; fi
+            else
+              echo "::error::Public URL inaccessible: ${url}"
+              failed=1
+            fi
+            echo "::endgroup::"
+          done
+          exit "${failed}"
