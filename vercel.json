@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/blog",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/youth-flag-football-sports-bra",
+      "destination": "/blog/what-to-wear-for-girls-flag-football/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/girls-flag-football-gear",
+      "destination": "/blog/what-to-wear-for-girls-flag-football/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/womens-flag-football-sports-bra",
+      "destination": "/blog/best-padded-sports-bras-for-flag-football/",
+      "permanent": true
+    }
+  ]
+}
